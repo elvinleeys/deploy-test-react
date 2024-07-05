@@ -1,7 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(()=>{
+    // {process.env.REACT_APP_BACK_END_URL}
+    const getDatas = async() => {
+      const response = await fetch(`https://port-0-deploy-test-back-ly8jjia4a07a3014.sel5.cloudtype.app/test`, {
+        method: "POST"
+      });
+      const datas = await response.json();
+      return datas;
+    }
+  
+    getDatas().then(console.log).catch(console.error)
+
+  }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
